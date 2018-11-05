@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Gelismis.Hesap.Makinesi</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css\gelismis.css">
+ 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="css\hesapmakinesi.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(e) {
+    $('#1,#2,#3,#4,#5,#6,#7,#8,#9,#0').click(function(){
+		var v = $(this).val();
+		$('#answer').val($('#answer').val() + v);	
+	});
+	$('#AC').click(function(){
+		$('#answer').val('');
+		$('#operation').val('');
+		$('#operation').removeClass('activeAnswer');
+		$('#equals').attr('onclick','');
+	});
+	$('#plus').click(function(e) { 
+	
+		if($('#answer').val() == ''){
+			return false;
+			$('#equals').attr('onclick','');
+		}
+		else if ( $('#operation').attr('class') == 'activeAnswer') {
+			$('#operation').val( $('#operation').val() + $('#plus').val() );
+			$('#answer').val('');
+			$('#equals').attr('onclick','');
+		}
+		else{
+			$('#operation').val( $('#operation').val() + $('#answer').val() + $('#plus').val() );
+			$('#answer').val('');
+			$('#equals').attr('onclick','');
+		}
+    });
+	$('#subtract').click(function(e) { 
+	
+		if($('#answer').val() == ''){
+			return false;	
+			$('#equals').attr('onclick','');
+		}
+		else if ( $('#operation').attr('class') == 'activeAnswer') {
+			$('#operation').val( $('#operation').val() + $('#subtract').val() );
+			$('#answer').val('');
+			$('#equals').attr('onclick','');
+		}
+		else{
+			$('#operation').val( $('#operation').val() + $('#answer').val() + $('#subtract').val() );
+			$('#answer').val('');
+			$('#equals').attr('onclick','');
+		}
+    });
+	$('#divide').click(function(e) { 
+	
+		if($('#answer').val() == ''){
+			return false;	
+			$('#equals').attr('onclick','');
+		}
+		else if ( $('#operation').attr('class') == 'activeAnswer') {
+			$('#operation').val( $('#operation').val() + $('#divide').val() );
+			$('#answer').val('');
+			$('#equals').attr('onclick','');
+		}
+		else{
+			$('#operation').val( $('#operation').val() + $('#answer').val() + $('#divide').val() );
+			$('#answer').val('');
+			$('#equals').attr('onclick','');
+		}
+    });
+	$('#product').click(function(e) { 
+	
+		if($('#answer').val() == ''){
+			return false;	
+			$('#equals').attr('onclick','');
+		}
+		else if ( $('#operation').attr('class') == 'activeAnswer') {
+			$('#operation').val( $('#operation').val() + $('#product').val() );
+			$('#answer').val('');
+			$('#equals').attr('onclick','');
+		}
+		else{
+			$('#operation').val( $('#operation').val() + $('#answer').val() + $('#product').val() );
+			$('#answer').val('');
+			$('#equals').attr('onclick','');
+		}
+    });	
+	$('#equals').click(function(){
+		
+		if($('#equals').attr('onclick') != 'return false'){
+		
+			var a = $('#answer').val();
+			var b = $('#operation').val();
+			var c = b.concat(a);
+			$('#answer').val(eval(c));
+			$('#operation').val(eval(c));
+			$('#operation').addClass('activeAnswer');
+			$('#equals').attr('onclick','return false');
+		
+		}
+	});
+});
+</script>
+
+
+</head>
+
+<body>
+<form action=""  id="calculator">
+<div class="container-fluid">
+  
+  <div class="row">
+    <div class="col-xs-6 col-sm-3" style="background-color:lavender;" >
+      
+      
+    </div>
+    <div class="col-xs-12 col-sm-6" style="background-color:black;"  align="center" >
+			<strong>
+			<input type="hidden" id="operation" value=""/>
+			<input class="screen" type="text" id="answer" value="0"></br>
+	
+  
+		
+			<input type="button" class="button button1" name="num" id="(" value="(">
+			<input type="button" class="button button1" name="num" id=")" value=")">
+			<input type="button" class="button button1" name="num" id="mc" value="mc">
+			<input type="button" class="button button1" name="num" id="m+" value="m+">
+			<input type="button" class="button button1" name="num" id="m-" value="m-">
+			<input type="button" class="button button1" name="num" id="DEL" value="Back">
+			<input type="button" class="button button4" name="num" id="AC" value="AC">
+			<input type="button" class="button button4" name="num" id="±" value="±">
+			<input type="button" class="button button4" name="num" id="%" value="%">
+			<input type="button" class="button button2" name="num" id="product" value="/"></br>
+			
+			<input type="button" class="button button1" name="num" id="mr" value="mr">
+			<input type="button" class="button button1" name="num" id="x²" value="x²">
+			<input type="button" class="button button1" name="num" id="x³" value="x³">
+			<input type="button" class="button button1" name="num" id="xʸ" value="xʸ">
+			<input type="button" class="button button1" name="num" id="e˟" value="e˟">
+			<input type="button" class="button button1" name="num" id="10˟" value="10˟">
+			<input type="button" class="button button3" name="num" id="7" value="7">
+			<input type="button" class="button button3" name="num" id="8" value="8">
+			<input type="button" class="button button3" name="num" id="9" value="9">
+			<input type="button" class="button button2" name="num" id="divide" value="*"></br>
+			
+			<input type="button" class="button button1" name="num" id="1⁄x" value="1⁄x">
+			<input type="button" class="button button1" name="num" id="²√x" value="²√x">
+			<input type="button" class="button button1" name="num" id="³√x" value="³√x">
+			<input type="button" class="button button1" name="num" id="ʸ√x" value="ʸ√x">
+			<input type="button" class="button button1" name="num" id="ln" value="ln">
+			<input type="button" class="button button1" name="num" id="log˟" value="log">
+			<input type="button" class="button button3" name="num" id="4" value="4">
+			<input type="button" class="button button3" name="num" id="5" value="5">
+			<input type="button" class="button button3" name="num" id="6" value="6">
+			<input type="button" class="button button2" name="num" id="subtract" value="-"></br>
+			
+			<input type="button" class="button button1" name="num" id="x!" value="x!">
+			<input type="button" class="button button1" name="num" id="sin" value="sin">
+			<input type="button" class="button button1" name="num" id="cos" value="cos">
+			<input type="button" class="button button1" name="num" id="tan" value="tan">
+			<input type="button" class="button button1" name="num" id="e" value="e">
+			<input type="button" class="button button1" name="num" id="EE" value="EE">
+			<input type="button" class="button button3" name="num" id="1" value="1">
+			<input type="button" class="button button3" name="num" id="2" value="2">
+			<input type="button" class="button button3" name="num" id="3" value="3">
+			<input type="button" class="button button2" name="num" id="plus" value="+"></br>
+			
+			<input type="button" class="button button1" name="num" id="Rad" value="Rad">
+			<input type="button" class="button button1" name="num" id="sinh" value="sinh">
+			<input type="button" class="button button1" name="num" id="cosh" value="cosh">
+			<input type="button" class="button button1" name="num" id="tanh" value="tanh">
+			<input type="button" class="button button1" name="num" id="π" value="π">
+			<input type="button" class="button button1" name="num" id="Rand" value="Rand">
+			<input type="button" class="button button0" name="num" id="0" value="0">
+			<input type="button" class="button button3" name="num" id="," value=",">
+			<input type="button" class="button button2" name="num" id="equals" value="=">
+			</br>
+			</strong>
+			
+			
+			
+			
+						
+			
+			
+			
+	
+	</div>
+	
+	<div class="clearfix visible-xs"></div>
+   
+    <div class="col-xs-6 col-sm-3" style="background-color:lightgray;"></div>
+  </div>
+</div>
+</form>
+
+
+</body>
+
+
+</html>
